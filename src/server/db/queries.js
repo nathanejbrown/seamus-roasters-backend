@@ -9,3 +9,13 @@ exports.getUser = function(tableName, emailAddress, callback) {
     callback(err);
   });
 };
+
+exports.addUser = function(userObject, callback) {
+  knex('users')
+  .insert(userObject)
+  .then(result => {
+    callback(null, result);
+  }).catch(err => {
+    callback(err);
+  });
+};
